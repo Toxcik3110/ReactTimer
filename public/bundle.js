@@ -26544,9 +26544,11 @@ var Countdown = function (_React$Component) {
 		var _this = _possibleConstructorReturn(this, (Countdown.__proto__ || Object.getPrototypeOf(Countdown)).call(this, props));
 
 		_this.state = {
-			count: 0
+			count: 0,
+			countdownStatus: 'stopped'
 		};
 		_this.handleSetCountdown = _this.handleSetCountdown.bind(_this);
+		_this.startTimer = _this.startTimer.bind(_this);
 		return _this;
 	}
 
@@ -26554,8 +26556,35 @@ var Countdown = function (_React$Component) {
 		key: 'handleSetCountdown',
 		value: function handleSetCountdown(seconds) {
 			this.setState({
-				count: seconds
+				count: seconds,
+				countdownStatus: 'started'
 			});
+		}
+	}, {
+		key: 'componentDidUpdate',
+		value: function componentDidUpdate(prevProps, prevState) {
+			console.log(1);
+			console.log(this.state.countdownStatus);
+			console.log(prevState.countdownStatus);
+			if (this.state.countdownStatus !== prevState.countdownStatus) {
+				switch (this.state.countdownStatus) {
+					case 'started':
+						this.startTimer();
+						break;
+				}
+			}
+		}
+	}, {
+		key: 'startTimer',
+		value: function startTimer() {
+			var that = this;
+			this.timer = setInterval(function () {
+				console.log("2");
+				var newCount = that.state.count - 1;
+				that.setState({
+					count: newCount >= 0 ? newCount : 0
+				});
+			}, 1000);
 		}
 	}, {
 		key: 'render',
