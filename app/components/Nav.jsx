@@ -31,9 +31,8 @@ class Nav extends React.Component {
 				<div className="top-bar-left">
 					<ul className="menu">
 						<li className="menu-text">React weather app</li>
-						<li><NavLink to="/weather" activeClassName="active-link" activeStyle={{fontWeight: 'bold'}}>React Weather</NavLink></li>
-						<li><NavLink to="/about" activeClassName="active-link" activeStyle={{fontWeight: 'bold'}}>About</NavLink></li>
-						<li><NavLink to="/examples" activeClassName="active-link" activeStyle={{fontWeight: 'bold'}}>Examples</NavLink></li>
+						<li><NavLink to="/timer" activeClassName="active-link" activeStyle={{fontWeight: 'bold'}}>Timer</NavLink></li>
+						<li><NavLink to="/countdown" activeClassName="active-link" activeStyle={{fontWeight: 'bold'}}>Countdown</NavLink></li>
 					</ul>
 				</div>
 				<div className="top-bar-right">
