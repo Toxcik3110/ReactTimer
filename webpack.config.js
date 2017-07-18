@@ -23,6 +23,7 @@ module.exports = {
 	resolve: {
 		alias: {
 			Main: path.resolve(__dirname, 'app/components/Main.jsx'),
+			Clock: path.resolve(__dirname, 'app/components/Clock.jsx'),
 			applicationStyles: path.resolve(__dirname, 'app/styles/app.scss'),
 		},
 		extensions: [

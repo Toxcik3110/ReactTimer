@@ -11426,7 +11426,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(239);
+var	fixUrls = __webpack_require__(240);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -11790,9 +11790,9 @@ var _Main = __webpack_require__(206);
 
 var _Main2 = _interopRequireDefault(_Main);
 
-__webpack_require__(237);
+__webpack_require__(238);
 
-__webpack_require__(240);
+__webpack_require__(241);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -26519,6 +26519,10 @@ var _react = __webpack_require__(6);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _Clock = __webpack_require__(237);
+
+var _Clock2 = _interopRequireDefault(_Clock);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -26542,7 +26546,7 @@ var Countdown = function (_React$Component) {
 			return _react2.default.createElement(
 				'div',
 				null,
-				'Countdown jsx'
+				_react2.default.createElement(_Clock2.default, { totalSeconds: 129 })
 			);
 		}
 	}]);
@@ -26558,10 +26562,71 @@ exports.default = Countdown;
 /* 237 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _react = __webpack_require__(6);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Clock = _react2.default.createClass({
+	displayName: 'Clock',
+
+
+	getDefaultProps: function getDefaultProps() {
+		return { totalSeconds: 0 };
+	},
+
+	propTypes: {
+		totalSeconds: _react2.default.PropTypes.number
+	},
+
+	formatSeconds: function formatSeconds(totalSeconds) {
+		var seconds = totalSeconds % 60;
+		var minutes = Math.floor(totalSeconds / 60);
+
+		if (seconds < 10) {
+			seconds = '0' + seconds;
+		}
+
+		if (minutes < 10) {
+			minutes = '0' + minutes;
+		}
+
+		return minutes + ":" + seconds;
+	},
+
+	render: function render() {
+		var totalSeconds = this.props.totalSeconds;
+
+		return _react2.default.createElement(
+			'div',
+			{ className: 'clock' },
+			_react2.default.createElement(
+				'span',
+				{ className: 'clock-text' },
+				this.formatSeconds(totalSeconds)
+			)
+		);
+	}
+});
+
+exports.default = Clock;
+
+/***/ }),
+/* 238 */
+/***/ (function(module, exports, __webpack_require__) {
+
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(238);
+var content = __webpack_require__(239);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -26586,7 +26651,7 @@ if(false) {
 }
 
 /***/ }),
-/* 238 */
+/* 239 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(97)(undefined);
@@ -26600,7 +26665,7 @@ exports.push([module.i, "@charset \"UTF-8\";@media print,screen and (min-width:4
 
 
 /***/ }),
-/* 239 */
+/* 240 */
 /***/ (function(module, exports) {
 
 
@@ -26695,13 +26760,13 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 240 */
+/* 241 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(241);
+var content = __webpack_require__(242);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -26726,7 +26791,7 @@ if(false) {
 }
 
 /***/ }),
-/* 241 */
+/* 242 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(97)(undefined);
@@ -26734,7 +26799,7 @@ exports = module.exports = __webpack_require__(97)(undefined);
 
 
 // module
-exports.push([module.i, ".top-bar, .top-bar ul {\n  background-color: #333333; }\n\n.top-bar .menu-text {\n  color: white; }\n\n.top-bar .menu > .menu-text > a {\n  display: inline;\n  padding: 0; }\n", ""]);
+exports.push([module.i, ".top-bar, .top-bar ul {\n  background-color: #333333; }\n\n.top-bar .menu-text {\n  color: white; }\n\n.top-bar .menu > .menu-text > a {\n  display: inline;\n  padding: 0; }\n\n.clock {\n  align-items: center;\n  background-color: #b5d0e2;\n  border: 2px solid #2099e8;\n  border-radius: 50%;\n  display: flex;\n  height: 14rem;\n  justify-content: center;\n  margin: 4rem auto;\n  width: 14rem; }\n\n.clock-text {\n  color: white;\n  font-size: 2.25rem;\n  font-weight: 300; }\n", ""]);
 
 // exports
 
