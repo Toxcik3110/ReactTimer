@@ -23879,6 +23879,10 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = __webpack_require__(206);
 
+var _Nav = __webpack_require__(239);
+
+var _Nav2 = _interopRequireDefault(_Nav);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -23896,11 +23900,6 @@ var Main = function (_React$Component) {
 		return _possibleConstructorReturn(this, (Main.__proto__ || Object.getPrototypeOf(Main)).call(this, props));
 	}
 
-	// <Route exact path='/' component={Weater} />
-	// <Route path='/weather' component={Weater} />
-	// <Route path='/about' component={About} />
-	// <Route path='/examples' component={Examples} />
-
 	_createClass(Main, [{
 		key: 'render',
 		value: function render() {
@@ -23910,10 +23909,21 @@ var Main = function (_React$Component) {
 				_react2.default.createElement(
 					'div',
 					null,
+					_react2.default.createElement(_Nav2.default, null),
 					_react2.default.createElement(
-						'p',
-						null,
-						'Main.jsx Rendered'
+						'div',
+						{ className: 'grid-x grid-margin-x' },
+						_react2.default.createElement('div', { className: 'auto cell' }),
+						_react2.default.createElement(
+							'div',
+							{ className: 'medium-6 large-4 cell' },
+							_react2.default.createElement(
+								'h1',
+								null,
+								'Hello!'
+							)
+						),
+						_react2.default.createElement('div', { className: 'auto cell' })
 					)
 				)
 			);
@@ -26487,10 +26497,146 @@ exports = module.exports = __webpack_require__(96)(undefined);
 
 
 // module
-exports.push([module.i, ".page-title {\n  margin-top: 2.5rem;\n  margin-bottom: 2.5rem;\n  color: #555; }\n\ninput[type=search] {\n  box-shadow: none; }\n", ""]);
+exports.push([module.i, ".top-bar, .top-bar ul {\n  background-color: #333333; }\n\n.top-bar .menu-text {\n  color: white; }\n\n.top-bar .menu > .menu-text > a {\n  display: inline;\n  padding: 0; }\n", ""]);
 
 // exports
 
+
+/***/ }),
+/* 239 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(7);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(206);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Nav = function (_React$Component) {
+	_inherits(Nav, _React$Component);
+
+	function Nav(props) {
+		_classCallCheck(this, Nav);
+
+		var _this = _possibleConstructorReturn(this, (Nav.__proto__ || Object.getPrototypeOf(Nav)).call(this, props));
+
+		_this.onSearch = _this.onSearch.bind(_this);
+		_this.handleChange = _this.handleChange.bind(_this);
+		_this.state = { value: '' };
+		return _this;
+	}
+
+	_createClass(Nav, [{
+		key: 'handleChange',
+		value: function handleChange(e) {
+			this.setState({
+				value: e.target.value
+			});
+		}
+	}, {
+		key: 'onSearch',
+		value: function onSearch(e) {
+			e.preventDefault();
+			var location = this.state.value;
+			if (location.length > 0) {
+				var encodedLocation = encodeURIComponent(location);
+				this.state.value = '';
+				window.location.search = '?location=' + encodedLocation;
+			}
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			return _react2.default.createElement(
+				'div',
+				{ className: 'top-bar' },
+				_react2.default.createElement(
+					'div',
+					{ className: 'top-bar-left' },
+					_react2.default.createElement(
+						'ul',
+						{ className: 'menu' },
+						_react2.default.createElement(
+							'li',
+							{ className: 'menu-text' },
+							'React weather app'
+						),
+						_react2.default.createElement(
+							'li',
+							null,
+							_react2.default.createElement(
+								_reactRouterDom.NavLink,
+								{ to: '/weather', activeClassName: 'active-link', activeStyle: { fontWeight: 'bold' } },
+								'React Weather'
+							)
+						),
+						_react2.default.createElement(
+							'li',
+							null,
+							_react2.default.createElement(
+								_reactRouterDom.NavLink,
+								{ to: '/about', activeClassName: 'active-link', activeStyle: { fontWeight: 'bold' } },
+								'About'
+							)
+						),
+						_react2.default.createElement(
+							'li',
+							null,
+							_react2.default.createElement(
+								_reactRouterDom.NavLink,
+								{ to: '/examples', activeClassName: 'active-link', activeStyle: { fontWeight: 'bold' } },
+								'Examples'
+							)
+						)
+					)
+				),
+				_react2.default.createElement(
+					'div',
+					{ className: 'top-bar-right' },
+					_react2.default.createElement(
+						'form',
+						{ onSubmit: this.onSearch },
+						_react2.default.createElement(
+							'ul',
+							{ className: 'menu' },
+							_react2.default.createElement(
+								'li',
+								{ className: 'menu-text' },
+								'Created by ',
+								_react2.default.createElement(
+									'a',
+									{ href: 'https://github.com/Toxcik3110', target: '_blank' },
+									'Toxcik'
+								)
+							)
+						)
+					)
+				)
+			);
+		}
+	}]);
+
+	return Nav;
+}(_react2.default.Component);
+
+exports.default = Nav;
 
 /***/ })
 /******/ ]);

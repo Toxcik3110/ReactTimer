@@ -1,5 +1,6 @@
 import React from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
+import Nav from './Nav';
 
 
 class Main extends React.Component {
@@ -7,16 +8,18 @@ class Main extends React.Component {
 		super(props);
 	}
 
-	// <Route exact path='/' component={Weater} />
-	// <Route path='/weather' component={Weater} />
-	// <Route path='/about' component={About} />
-	// <Route path='/examples' component={Examples} />
-
 	render() {
 		return (
 			<Router>
 				<div>
-					<p>Main.jsx Rendered</p>
+					<Nav />
+					<div className="grid-x grid-margin-x">
+						<div className="auto cell"></div>
+						<div className="medium-6 large-4 cell">
+							<h1>Hello!</h1>
+						</div>
+						<div className="auto cell"></div>
+					</div>
 				</div>
 			</Router>
 		);
