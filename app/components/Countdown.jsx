@@ -38,6 +38,11 @@ class Countdown extends React.Component {
 		}
 	}
 
+	componentWillUnmount() {
+		clearInterval(this.timer);
+		this.timer = undefined;
+	}
+
 	startTimer() {
 		var that = this;
 		this.timer = setInterval(function() {
@@ -46,6 +51,12 @@ class Countdown extends React.Component {
 			that.setState({
 				count:newCount >= 0 ? newCount : 0,
 			})
+
+			if (newCount === 0) {
+				this.setState({
+					countdownStatus:'stopped',
+				})
+			}
 		}, 1000);
 	}
 
